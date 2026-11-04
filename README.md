@@ -60,20 +60,22 @@ Foram avaliados os seguintes modelos:
 
 | Abordagem | Recall (Fraude) | Precisão (Fraude) | F1-Score (Fraude) |
 | --- | --- | --- | --- |
-| **XGBoost com `scale_pos_weight`** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
-| **XGBoost com `RandomUnderSampler`** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
-| **XGBoost com `SMOTE`** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
+| **XGBoost com `scale_pos_weight`** | 0.8776 | 0.8431 | 0.8600 |
+| **XGBoost com `RandomUnderSampler`** | 0.9184 | 0.0422 | 0.0807 |
+| **XGBoost com `SMOTE`** | 0.8776 | 0.8485 | 0.8629 |
 
 ## Comparação Geral dos Modelos
 
 | Modelo | Recall (Fraude) | Precisão (Fraude) | F1-Score (Fraude) | ROC-AUC | PR-AUC |
 | --- | --- | --- | --- | --- | --- |
-| **Regressão Logística (baseline)** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salras)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
-| **Random Forest** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
-| **XGBoost** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
+| **Regressão Logística (baseline)** | 0.9184 | 0.0573 | 0.1080 | 0.9720 | 0.7194 |
+| **Random Forest** | 0.8367 | 0.9318 | 0.8817 | 0.9529 | 0.8620 |
+| **XGBoost** | 0.8776 | 0.8431 | 0.8600 | 0.9798 | 0.8691 |
 
-- **Limiar de Decisão**: Ao invés de usar o limiar padrão (0.5), foi analisado o trade-off entre Precisão e Recall através da curva Precision-Recall, ajustando o limiar para maximizar o Recall da classe fraude.
-- **SHAP (SHapley Additive exPlanations)**: Utilizado para explicar global e localmente as predições do melhor modelo, identificando quais features mais contribuíram para classificar uma transação como fraude.
+## Limiar de Decisão e Explicabilidade
+
+- **Limiar de Decisão**: Ao invés de usar o limiar padrão (0.5), foi analisado o trade-off entre Precisão e Recall através da curva Precision-Recall, ajustatingo o limiar para **0.4**, resultando em um modelo mais voltado para capturar fraudes com equilíbrio com a precisão. 
+- **SHAP (SHapley Additive exPlanations)**: Utilizado para explainglobal e localmente as predições da melhor abordagem, identificando que os componentes V (principalmente **V14**, **V12**, **V10** e **V17**) foram os que mais contribuíram para a classificação de transações as fraude.
 
 ## Diferenças em Relação ao que foi Apresentado na Aula
 
