@@ -56,7 +56,21 @@ Foram avaliados os seguintes modelos:
 | **Random Forest** | Ensemble com `class_weight='balanced_subsample'` | Robusto, lida bem com não-linearidades e fornece feature importance |
 | **XGBoost** | Gradient Boosting com `scale_pos_weight` | Geralmente performa muito bem em detecção de fraudes |
 
-## Limiar de Decisão e Explicabilidade
+## Comparação entre Abordagens de Balanceamento
+
+| Abordagem | Recall (Fraude) | Precisão (Fraude) | F1-Score (Fraude) |
+| --- | --- | --- | --- |
+| **XGBoost com `scale_pos_weight`** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
+| **XGBoost com `RandomUnderSampler`** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
+| **XGBoost com `SMOTE`** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
+
+## Comparação Geral dos Modelos
+
+| Modelo | Recall (Fraude) | Precisão (Fraude) | F1-Score (Fraude) | ROC-AUC | PR-AUC |
+| --- | --- | --- | --- | --- | --- |
+| **Regressão Logística (baseline)** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salras)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
+| **Random Forest** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
+| **XGBoost** | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* | *Ver notebook (saídas salvas)* |
 
 - **Limiar de Decisão**: Ao invés de usar o limiar padrão (0.5), foi analisado o trade-off entre Precisão e Recall através da curva Precision-Recall, ajustando o limiar para maximizar o Recall da classe fraude.
 - **SHAP (SHapley Additive exPlanations)**: Utilizado para explicar global e localmente as predições do melhor modelo, identificando quais features mais contribuíram para classificar uma transação como fraude.
